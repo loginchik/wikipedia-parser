@@ -3,4 +3,17 @@ name = "wikipedia-parser"
 version = "0.1.0"
 description = "Add your description here"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "httpx>=0.28.1",
+    "numpy>=2.3.3",
+    "pandas>=2.3.3",
+]
+
+[dependency-groups]
+dev = [
+    "notebook>=7.4.7",
+    "ruff>=0.14.0",
+]
+tests = [
+    "pytest>=8.4.2",
+]
