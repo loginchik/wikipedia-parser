@@ -121,7 +121,7 @@ def test_request_parse_url(url: str, project: str, article: str) -> None:
 @pytest.mark.parametrize(('start', 'end'), [
     (dt.date(2025, 1, 1), dt.date(2025, 1, 10)),
     (dt.date(2025, 1, 10), dt.date(2025, 1, 1)),
-])
+], ids=lambda x: x.strftime('%Y%m%d'))
 def test_request_to_url(granularity: DateGranularity, access: AccessType, agent: UserAgent,
                         start: dt.date, end: dt.date) -> None:
     request = WikimediaRequest(
