@@ -17,3 +17,16 @@ dev = [
 tests = [
     "pytest>=8.4.2",
 ]
+
+
+[tool.ruff]
+exclude = [
+    "__init__.py"
+]
+line-length = 120
+indent-width = 4
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+docstring-code-format = false
