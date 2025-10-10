@@ -5,7 +5,7 @@ from typing import NamedTuple, Dict, Any, Tuple
 import numpy as np
 import pandas as pd
 
-from wikimedia_parser.enums import DateGranularity, AccessType, UserAgent
+from .enums import DateGranularity, AccessType, UserAgent
 
 
 class PageStatisticsRecord(NamedTuple):
@@ -34,6 +34,7 @@ class PageStatisticsRecord(NamedTuple):
         updated_data["access"] = AccessType(data["access"])
         updated_data["granularity"] = DateGranularity(data["granularity"])
         updated_data["agent"] = UserAgent(data["agent"])
+        updated_data["views"] = int(data["views"])
         return cls(**updated_data)
 
 

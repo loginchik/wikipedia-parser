@@ -6,8 +6,8 @@ from typing import List
 import httpx
 import pandas as pd
 
-from wikimedia_parser.enums import DateGranularity, AccessType, UserAgent
-from wikimedia_parser.types import (
+from .enums import DateGranularity, AccessType, UserAgent
+from .types import (
     WikimediaRequest,
     PageStatistics,
     PageStatisticsRecord,
