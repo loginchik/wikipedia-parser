@@ -37,6 +37,19 @@ class PageStatisticsRecord(NamedTuple):
         updated_data["views"] = int(data["views"])
         return cls(**updated_data)
 
+    def __hash__(self):
+        return hash((self.project, self.article, self.granularity, self.timestamp, self.access, self.agent))
+
+    def __eq__(self, other: "PageStatisticsRecord") -> bool:
+        if not isinstance(other, PageStatisticsRecord):
+            return NotImplemented
+        return all(
+            [
+                getattr(self, attr) == getattr(other, attr)
+                for attr in ["project", "article", "granularity", "timestamp", "access", "agent"]
+            ]
+        )
+
 
 class PageStatistics:
     """
@@ -61,7 +74,7 @@ class PageStatistics:
             ]
         ):
             raise ValueError("Inconsistent records")
-        self.records = sorted(records, key=lambda r: r.timestamp)
+        self.records = sorted(list(set(records)), key=lambda r: r.timestamp)
 
     def to_df(self) -> pd.DataFrame:
         """
