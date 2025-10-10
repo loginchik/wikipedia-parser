@@ -54,7 +54,9 @@ jobs:
           python-version: "3.13"
 
       - name: Install dependencies
-        run: uv sync
+        run: |
+          uv sync
+          uv sync --group tests 
 
       - name: Run tests
         run: uv run pytest -v
