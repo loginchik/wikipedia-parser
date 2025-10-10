@@ -1,8 +1,10 @@
 [project]
 name = "wikipedia-parser"
-version = "0.1.0"
-description = "Add your description here"
-requires-python = ">=3.13"
+version = "1.0.0"
+description = "Wikipedia OpenData parsers"
+requires-python = ">=3.12"
+authors = [{ name = "Anna Loginova" }]
+license = { text = "MIT" }
 dependencies = [
     "httpx>=0.28.1",
     "numpy>=2.3.3",
