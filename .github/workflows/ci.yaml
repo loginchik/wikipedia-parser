@@ -1,0 +1,60 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - develop
+      - main
+    paths:
+      - "**/*.py"
+      - "pyproject.toml"
+      - ".github/workflows/ci.yaml"
+  pull_request:
+    branches:
+      - develop
+    paths:
+      - "**/*.py"
+      - "pyproject.toml"
+      - ".github/workflows/ci.yaml"
+
+jobs:
+  linter:
+    name: Run linter
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+
+      - name: Install ruff
+        run: pip install ruff
+
+      - name: Run linter
+        run: ruff check src
+
+  tests:
+    name: Run Pytest
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Install UV
+        run: curl -LsSf https://astral.sh/uv/install.sh | sh
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Run tests
+        run: uv run pytest -v
