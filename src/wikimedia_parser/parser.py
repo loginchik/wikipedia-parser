@@ -64,7 +64,7 @@ class WikimediaParser:
         self,
         start_date: dt.date,
         end_date: dt.date,
-        pages: str,
+        pages: List[str],
         granularity: DateGranularity = DateGranularity.Daily,
         access: AccessType = AccessType.Any,
         agent: UserAgent = UserAgent.User,
