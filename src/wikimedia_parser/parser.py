@@ -64,14 +64,14 @@ class WikimediaParser:
         self,
         start_date: dt.date,
         end_date: dt.date,
-        *pages: str,
+        pages: str,
         granularity: DateGranularity = DateGranularity.Daily,
         access: AccessType = AccessType.Any,
         agent: UserAgent = UserAgent.User,
         chunk_size: int = 10,
     ) -> List[PageStatistics]:
         """
-        Gathers multiple pages' statistics in chunks with the pause specified between chunks requests
+        Gathers multiple pages' statistics in chunks
 
         Splits the provided pages into an array of chunks, that are loaded simultaneously, and gathers the data.
         If any loading process raises error, cancels all other tasks and throws the exception
